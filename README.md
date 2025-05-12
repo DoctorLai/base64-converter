@@ -46,7 +46,7 @@ npm run dev
 4. Run tests:
 ```bash
 npm run test
-```bash
+```
  
 5. Lint the code:
 ```bash
