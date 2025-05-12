@@ -1,9 +1,9 @@
 # 🔤 Base64 Converter  
+[![Base64 Converter (Built, Lint and Test)](https://github.com/DoctorLai/base64-converter/actions/workflows/ci.yaml/badge.svg)](https://github.com/DoctorLai/base64-converter/actions/workflows/ci.yaml)
  
 A simple web-based tool to **encode or decode Base64** strings or files. This app is built using React and runs directly in your browser. It provides an easy-to-use interface with two text areas—just paste your content and convert instantly, or upload files for encoding.
  
 This tool also supports decoding of `.b64` files into their original binary form.
-
 
 ## 🚀 Features  
  
