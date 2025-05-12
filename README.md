@@ -19,8 +19,10 @@ This tool also supports decoding of `.b64` files into their original binary form
  
 Try it out on GitHub Pages: [Base64 Converter](https://doctorlai.github.io/base64-converter/)
 
+![image](https://github.com/user-attachments/assets/d17ed6ea-eef5-4616-8025-07a2ce861013)
+
 Please note: this is the open source version of this online tool: [Base64 Encoder/Decoder (Javascript) for Text/Binary Files](https://rot47.net/base64encoder.html)
- 
+
 ## 🛠 Installation  
  
 To run the tool locally:  
