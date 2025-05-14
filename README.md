@@ -48,9 +48,11 @@ npm run dev
 npm run test
 ```
  
-5. Lint the code:
+5. Coding format check:
+Use `prettier` to either check or format the source code:
+
 ```bash
-npm run lint
+npm run format
 ```
  
 6. Open [http://localhost:5173/base64-converter/](http://localhost:5173/base64-converter/) in your browser.  

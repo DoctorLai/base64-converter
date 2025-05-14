@@ -1,5 +1,9 @@
-import { describe, it, expect } from 'vitest'
-import { encodeToBase64, decodeFromBase64, isLikelyText } from '../src/functions'
+import { describe, it, expect } from 'vitest';
+import {
+  encodeToBase64,
+  decodeFromBase64,
+  isLikelyText,
+} from '../src/functions';
 
 describe('Base64 converter', () => {
   it('encodes plain text to Base64', () => {
@@ -62,5 +66,5 @@ describe('Is likely text', () => {
     const text = 'A quick brown fox jumps over the lazy dog.';
     const result = isLikelyText(text);
     expect(result).toBe(true);
-  });  
+  });
 });
