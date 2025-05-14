@@ -3,6 +3,7 @@ import {
   encodeToBase64,
   decodeFromBase64,
   isLikelyText,
+  arrayBufferToBase64,
 } from '../src/functions';
 
 describe('Base64 converter', () => {
@@ -16,6 +17,19 @@ describe('Base64 converter', () => {
     const base64Str = 'SGVsbG8sIFJ5YW4h';
     const decoded = decodeFromBase64(base64Str);
     expect(decoded).toBe('Hello, Ryan!');
+  });
+
+  // decode with whitespace
+  it('decodes Base64 with whitespace', () => {
+    const base64Str = 'SGVsbG8sIFJ5YW4h   ';
+    const decoded = decodeFromBase64(base64Str);
+    expect(decoded).toBe('Hello, Ryan!');
+  });
+  it('throws error for invalid Base64 string', () => {
+    const invalidBase64 = 'SGVsbG8sIFJ5YW4h!';
+    expect(() => decodeFromBase64(invalidBase64)).toThrow(
+      'Invalid Base64 length'
+    );
   });
 });
 
@@ -66,5 +80,20 @@ describe('Is likely text', () => {
     const text = 'A quick brown fox jumps over the lazy dog.';
     const result = isLikelyText(text);
     expect(result).toBe(true);
+  });
+});
+
+describe('arrayBufferToBase64', () => {
+  it('converts ArrayBuffer to Base64', () => {
+    const buffer = new Uint8Array([72, 101, 108, 108, 111]).buffer;
+    const base64 = arrayBufferToBase64(buffer);
+    expect(base64).toBe('SGVsbG8=');
+  });
+
+  it('throws error for non-ArrayBuffer input', () => {
+    const invalidInput = 'Hello, Ryan!';
+    expect(() => arrayBufferToBase64(invalidInput)).toThrow(
+      'Input must be an ArrayBuffer'
+    );
   });
 });
