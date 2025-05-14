@@ -43,16 +43,17 @@ export default function App() {
         binaryOutputRef.current = null;
       } else {
         // Otherwise, store binary data for saving
-        binaryOutputRef.current = Uint8Array.from(decoded, c => c.charCodeAt(0));
+        binaryOutputRef.current = Uint8Array.from(decoded, (c) =>
+          c.charCodeAt(0)
+        );
       }
     } catch (error) {
       // Output specific error message for debugging
-      console.error("Decoding Error:", error);
+      console.error('Decoding Error:', error);
       setOutput('Error decoding Base64');
       binaryOutputRef.current = null;
     }
   };
-
 
   const handleLoadFile = () => {
     fileInputRef.current.click();
@@ -72,7 +73,7 @@ export default function App() {
 
         try {
           const decoded = atob(base64);
-          const binary = Uint8Array.from(decoded, c => c.charCodeAt(0));
+          const binary = Uint8Array.from(decoded, (c) => c.charCodeAt(0));
           binaryOutputRef.current = binary;
 
           // Check if the decoded content is likely text
@@ -107,7 +108,9 @@ export default function App() {
 
     if (binaryOutputRef.current) {
       // Save decoded binary as .bin
-      blob = new Blob([binaryOutputRef.current], { type: 'application/octet-stream' });
+      blob = new Blob([binaryOutputRef.current], {
+        type: 'application/octet-stream',
+      });
       filename += '.bin';
     } else {
       // Save Base64-encoded output as .b64
@@ -145,7 +148,7 @@ export default function App() {
       <div>
         <h1>🔐 Base64 Converter</h1>
 
-        <div className="button-row">
+        <div className='button-row'>
           <button onClick={encodeBase64}>→ Encode</button>
           <button onClick={decodeBase64}>← Decode</button>
           <button onClick={handleLoadFile}>📂 Load File</button>
@@ -158,34 +161,34 @@ export default function App() {
 
         <textarea
           className={`textarea ${darkMode ? 'dark' : 'light'}`}
-          placeholder="Input here..."
+          placeholder='Input here...'
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
 
         <textarea
           className={`textarea ${darkMode ? 'dark' : 'light'}`}
-          placeholder="Output appears here..."
+          placeholder='Output appears here...'
           value={output}
           readOnly
         />
 
         <input
-          type="file"
-          accept=".txt,.json,.yaml,.yml,.b64,image/*,.pdf"
+          type='file'
+          accept='.txt,.json,.yaml,.yml,.b64,image/*,.pdf'
           ref={fileInputRef}
           style={{ display: 'none' }}
           onChange={onFileChange}
         />
       </div>
 
-      <div className="footer">
+      <div className='footer'>
         <p>
           Made with ❤️ by{' '}
           <a
-            href="https://github.com/doctorlai"
-            target="_blank"
-            rel="noopener noreferrer"
+            href='https://github.com/doctorlai'
+            target='_blank'
+            rel='noopener noreferrer'
             style={{ textDecoration: 'none', fontWeight: 'bold' }}
           >
             @justyy
@@ -194,9 +197,9 @@ export default function App() {
         <p>
           If you found this useful, consider buying me a{' '}
           <a
-            href="https://justyy.com/out/bmc"
-            target="_blank"
-            rel="noopener noreferrer"
+            href='https://justyy.com/out/bmc'
+            target='_blank'
+            rel='noopener noreferrer'
             style={{ color: '#007bff', textDecoration: 'underline' }}
           >
             coffee
@@ -206,21 +209,24 @@ export default function App() {
         <p>
           Open Source on{' '}
           <a
-            href="https://github.com/DoctorLai/base64-converter"
-            target="_blank"
-            rel="noopener noreferrer"
+            href='https://github.com/DoctorLai/base64-converter'
+            target='_blank'
+            rel='noopener noreferrer'
             style={{ color: '#007bff', textDecoration: 'underline' }}
           >
             GitHub
           </a>
         </p>
         <p>
-          Alternatively: <a
-            href="https://rot47.net/base64encoder.html"
-            target="_blank"
-            rel="noopener noreferrer"
+          Alternatively:{' '}
+          <a
+            href='https://rot47.net/base64encoder.html'
+            target='_blank'
+            rel='noopener noreferrer'
             style={{ color: '#007bff', textDecoration: 'underline' }}
-          >Base64 Encoder/Decoder</a>
+          >
+            Base64 Encoder/Decoder
+          </a>
         </p>
       </div>
     </div>

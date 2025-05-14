@@ -1,4 +1,3 @@
-
 export function encodeToBase64(str) {
   return btoa(str);
 }
