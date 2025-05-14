@@ -22,16 +22,8 @@ export function decodeFromBase64(base64Str) {
   }
 }
 
-export function isLikelyText(content) 
-
-
-
-
-
-
-
-{
-                  let text = '';
+export function isLikelyText(content) {
+  let text = '';
 
   if (typeof content === 'string') {
     text = content;

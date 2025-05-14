@@ -22,7 +22,9 @@ export default function App() {
     try {
       const encoded = encodeToBase64(unescape(encodeURIComponent(input)));
       setOutput(encoded);
-      binaryOutputRef.current = Uint8Array.from(encoded, c => c.charCodeAt(0));
+      binaryOutputRef.current = Uint8Array.from(encoded, (c) =>
+        c.charCodeAt(0)
+      );
       outputTypeRef.current = 'text';
     } catch (error) {
       setOutput('Error encoding to Base64: ' + error.message);
@@ -35,20 +37,23 @@ export default function App() {
     try {
       // Decode the cleaned Base64 string
       const binaryStr = decodeFromBase64(input);
-      if (typeof binaryStr !== 'string') throw new Error("Decoded result is not a string");
-      const bytes = Uint8Array.from(binaryStr, c => c.charCodeAt(0));
-      const decoded = new TextDecoder('utf-8').decode(bytes);      
+      if (typeof binaryStr !== 'string')
+        throw new Error('Decoded result is not a string');
+      const bytes = Uint8Array.from(binaryStr, (c) => c.charCodeAt(0));
+      const decoded = new TextDecoder('utf-8').decode(bytes);
       setOutput(decoded);
-      binaryOutputRef.current = Uint8Array.from(decoded, c => c.charCodeAt(0));
+      binaryOutputRef.current = Uint8Array.from(decoded, (c) =>
+        c.charCodeAt(0)
+      );
 
       if (isLikelyText(decoded)) {
         outputTypeRef.current = 'text';
-      } else {        
+      } else {
         outputTypeRef.current = 'binary';
       }
     } catch (error) {
       // Output specific error message for debugging
-      console.error("Decoding Error:", error);
+      console.error('Decoding Error:', error);
       setOutput('Error decoding Base64: ' + error.message);
       binaryOutputRef.current = null;
       outputTypeRef.current = null;
@@ -73,25 +78,17 @@ export default function App() {
 
         try {
           const decoded = decodeFromBase64(base64);
-          const binary = Uint8Array.from(decoded, c => c.charCodeAt(0));
+          const binary = Uint8Array.from(decoded, (c) => c.charCodeAt(0));
           binaryOutputRef.current = binary;
           outputTypeRef.current = 'binary';
 
           // Check if the decoded content is likely text
           const isText = isLikelyText(decoded);
           setOutput(decoded);
-          if (isText
-
-
-
-          )    
-          {            outputTypeRef.current = 'text';
+          if (isText) {
+            outputTypeRef.current = 'text';
           } else {
-            outputTypeRef.
-            
-            
-            
-            current = 'binary';
+            outputTypeRef.current = 'binary';
           }
         } catch {
           setOutput('Error decoding .b64 file.');
@@ -107,7 +104,9 @@ export default function App() {
         const base64 = arrayBufferToBase64(buffer);
         setInput('');
         setOutput(base64);
-        binaryOutputRef.current = Uint8Array.from(base64, c => c.charCodeAt(0));
+        binaryOutputRef.current = Uint8Array.from(base64, (c) =>
+          c.charCodeAt(0)
+        );
         outputTypeRef.current = 'text';
       };
       reader.readAsArrayBuffer(file);

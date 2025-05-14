@@ -26,7 +26,9 @@ describe('Base64 converter', () => {
   });
   it('throws error for invalid Base64 string', () => {
     const invalidBase64 = 'SGVsbG8sIFJ5YW4h!';
-    expect(() => decodeFromBase64(invalidBase64)).toThrow('Invalid Base64 length');
+    expect(() => decodeFromBase64(invalidBase64)).toThrow(
+      'Invalid Base64 length'
+    );
   });
 });
 
