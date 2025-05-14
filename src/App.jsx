@@ -12,6 +12,7 @@ export default function App() {
 
   const fileInputRef = useRef(null);
   const binaryOutputRef = useRef(null);
+  const outputTypeRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
@@ -21,38 +22,38 @@ export default function App() {
     try {
       const encoded = encodeToBase64(unescape(encodeURIComponent(input)));
       setOutput(encoded);
+      binaryOutputRef.current = Uint8Array.from(encoded, c => c.charCodeAt(0));
+      outputTypeRef.current = 'text';
+    } catch (error) {
+      setOutput('Error encoding to Base64: ' + error.message);
       binaryOutputRef.current = null;
-    } catch {
-      setOutput('Error encoding to Base64');
+      outputTypeRef.current = null;
     }
   };
 
   const decodeBase64 = () => {
     try {
-      // Clean up the Base64 string by removing any spaces and newlines
-      const cleanedInput = input.replace(/\s+/g, '');
-
       // Decode the cleaned Base64 string
-      const decoded = decodeFromBase64(cleanedInput);
+      const binaryStr = decodeFromBase64(input);
+      if (typeof binaryStr !== 'string') throw new Error("Decoded result is not a string");
+      const bytes = Uint8Array.from(binaryStr, c => c.charCodeAt(0));
+      const decoded = new TextDecoder('utf-8').decode(bytes);      
       setOutput(decoded);
+      binaryOutputRef.current = Uint8Array.from(decoded, c => c.charCodeAt(0));
 
-      // Check if the decoded content is likely text
       if (isLikelyText(decoded)) {
-        // If it's text, just display the decoded text
-        setOutput(decoded);
-        binaryOutputRef.current = null;
-      } else {
-        // Otherwise, store binary data for saving
-        binaryOutputRef.current = Uint8Array.from(decoded, c => c.charCodeAt(0));
+        outputTypeRef.current = 'text';
+      } else {        
+        outputTypeRef.current = 'binary';
       }
     } catch (error) {
       // Output specific error message for debugging
       console.error("Decoding Error:", error);
-      setOutput('Error decoding Base64');
+      setOutput('Error decoding Base64: ' + error.message);
       binaryOutputRef.current = null;
+      outputTypeRef.current = null;
     }
   };
-
 
   const handleLoadFile = () => {
     fileInputRef.current.click();
@@ -71,20 +72,31 @@ export default function App() {
         setInput(base64);
 
         try {
-          const decoded = atob(base64);
+          const decoded = decodeFromBase64(base64);
           const binary = Uint8Array.from(decoded, c => c.charCodeAt(0));
           binaryOutputRef.current = binary;
+          outputTypeRef.current = 'binary';
 
           // Check if the decoded content is likely text
-          const isText = /^[\x09\x0A\x0D\x20-\x7E]*$/.test(decoded);
-          if (isText) {
-            setOutput(decoded); // Show decoded text
+          const isText = isLikelyText(decoded);
+          setOutput(decoded);
+          if (isText
+
+
+
+          )    
+          {            outputTypeRef.current = 'text';
           } else {
-            setOutput('Loaded .b64 file. Decoded binary ready to save.');
+            outputTypeRef.
+            
+            
+            
+            current = 'binary';
           }
         } catch {
           setOutput('Error decoding .b64 file.');
           binaryOutputRef.current = null;
+          outputTypeRef.current = null;
         }
       };
       reader.readAsText(file);
@@ -95,7 +107,8 @@ export default function App() {
         const base64 = arrayBufferToBase64(buffer);
         setInput('');
         setOutput(base64);
-        binaryOutputRef.current = null;
+        binaryOutputRef.current = Uint8Array.from(base64, c => c.charCodeAt(0));
+        outputTypeRef.current = 'text';
       };
       reader.readAsArrayBuffer(file);
     }
@@ -105,11 +118,16 @@ export default function App() {
     let filename = 'output';
     let blob;
 
-    if (binaryOutputRef.current) {
+    if (outputTypeRef.current === 'text') {
+      // Save decoded text as .txt
+      blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
+      filename += '.txt';
+    } else if (outputTypeRef.current === 'binary') {
       // Save decoded binary as .bin
       blob = new Blob([binaryOutputRef.current], { type: 'application/octet-stream' });
       filename += '.bin';
-    } else {
+    } // else decode output field as .b64
+    else {
       // Save Base64-encoded output as .b64
       blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
       filename += '.b64';
@@ -127,7 +145,7 @@ export default function App() {
     for (let b of bytes) {
       binary += String.fromCharCode(b);
     }
-    return btoa(binary);
+    return encodeBase64(binary);
   };
 
   const toggleDarkMode = () => {

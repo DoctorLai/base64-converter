@@ -13,6 +13,17 @@ describe('Base64 converter', () => {
     const decoded = decodeFromBase64(base64Str);
     expect(decoded).toBe('Hello, Ryan!');
   });
+
+  // decode with whitespace
+  it('decodes Base64 with whitespace', () => {
+    const base64Str = 'SGVsbG8sIFJ5YW4h   ';
+    const decoded = decodeFromBase64(base64Str);
+    expect(decoded).toBe('Hello, Ryan!');
+  });
+  it('throws error for invalid Base64 string', () => {
+    const invalidBase64 = 'SGVsbG8sIFJ5YW4h!';
+    expect(() => decodeFromBase64(invalidBase64)).toThrow('Invalid Base64 length');
+  });
 });
 
 describe('Is likely text', () => {
