@@ -1,5 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import { encodeToBase64, decodeFromBase64, isLikelyText } from './functions';
+import {
+  encodeToBase64,
+  decodeFromBase64,
+  isLikelyText,
+  arrayBufferToBase64,
+} from './functions';
 import './App.css';
 
 export default function App() {
@@ -37,8 +42,9 @@ export default function App() {
     try {
       // Decode the cleaned Base64 string
       const binaryStr = decodeFromBase64(input);
-      if (typeof binaryStr !== 'string')
+      if (typeof binaryStr !== 'string') {
         throw new Error('Decoded result is not a string');
+      }
       const bytes = Uint8Array.from(binaryStr, (c) => c.charCodeAt(0));
       const decoded = new TextDecoder('utf-8').decode(bytes);
       setOutput(decoded);
@@ -84,11 +90,16 @@ export default function App() {
 
           // Check if the decoded content is likely text
           const isText = isLikelyText(decoded);
-          setOutput(decoded);
+
           if (isText) {
             outputTypeRef.current = 'text';
+            // utf-8
+            const utf8Decoder = new TextDecoder('utf-8');
+            const decodedText = utf8Decoder.decode(binary);
+            setOutput(decodedText);
           } else {
             outputTypeRef.current = 'binary';
+            setOutput(decoded);
           }
         } catch {
           setOutput('Error decoding .b64 file.');
@@ -104,10 +115,7 @@ export default function App() {
         const base64 = arrayBufferToBase64(buffer);
         setInput('');
         setOutput(base64);
-        binaryOutputRef.current = Uint8Array.from(base64, (c) =>
-          c.charCodeAt(0)
-        );
-        outputTypeRef.current = 'text';
+        binaryOutputRef.current = null;
       };
       reader.readAsArrayBuffer(file);
     }
@@ -140,15 +148,6 @@ export default function App() {
     link.click();
   };
 
-  const arrayBufferToBase64 = (buffer) => {
-    const bytes = new Uint8Array(buffer);
-    let binary = '';
-    for (let b of bytes) {
-      binary += String.fromCharCode(b);
-    }
-    return encodeBase64(binary);
-  };
-
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
@@ -157,6 +156,7 @@ export default function App() {
     setInput('');
     setOutput('');
     binaryOutputRef.current = null;
+    outputTypeRef.current = null;
   };
 
   return (

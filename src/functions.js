@@ -1,8 +1,8 @@
-export function encodeToBase64(str) {
+function encodeToBase64(str) {
   return btoa(str);
 }
 
-export function decodeFromBase64(base64Str) {
+function decodeFromBase64(base64Str) {
   if (typeof base64Str !== 'string') {
     throw new Error('Input must be a string');
   }
@@ -22,7 +22,7 @@ export function decodeFromBase64(base64Str) {
   }
 }
 
-export function isLikelyText(content) {
+function isLikelyText(content) {
   let text = '';
 
   if (typeof content === 'string') {
@@ -41,3 +41,17 @@ export function isLikelyText(content) {
   // Regex check: only printable ASCII characters and whitespace
   return /^[\x09\x0A\x0D\x20-\x7E]*$/.test(text);
 }
+
+function arrayBufferToBase64(buffer) {
+  if (!(buffer instanceof ArrayBuffer)) {
+    throw new Error('Input must be an ArrayBuffer');
+  }
+  const bytes = new Uint8Array(buffer);
+  let binary = '';
+  for (let b of bytes) {
+    binary += String.fromCharCode(b);
+  }
+  return encodeToBase64(binary);
+}
+
+export { encodeToBase64, decodeFromBase64, isLikelyText, arrayBufferToBase64 };

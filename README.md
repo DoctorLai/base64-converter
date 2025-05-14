@@ -8,7 +8,7 @@ This tool also supports decoding of `.b64` files into their original binary form
 ## 🚀 Features  
  
 - **Base64 Encode/Decode**: Convert plain text to Base64 and vice versa.  
-- **File Upload**: Upload `.txt` files to encode or `.b64` files to decode.  
+- **File Upload**: Upload files to encode or `.b64` files to decode.
 - **Download Results**: Download the converted content as `.b64` or `.bin`.  
 - **Dark Mode**: Toggle between light and dark themes.  
 - **Tab Support**: Proper indentation when using the "Tab" key in text areas.  
@@ -75,7 +75,7 @@ npm run format
  
 - **To decode a file**:  
   - Select a `.b64` file using the "Load File" button.  
-  - On success, the output will show `Loaded .b64 file. Decoded binary ready to save.`  
+  - On success, the output will show the decoded binary (which seems random output).
   - Click **Save File** to save the decoded content (in binary).  
  
 Use the **🌞/🌙 toggle** on top to switch between Light and Dark mode.  
@@ -102,5 +102,6 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
  
 ## 🙏 Acknowledgments  
  
-- Made with ❤️ by [@justyy](https://github.com/doctorlai)  
+- Made with ❤️ by [@justyy](https://github.com/doctorlai)
+- Initial Boilerplate code contributed by ChatGPT-4o and o4-mini.
 - Like this project? Consider [buying me a coffee](https://justyy.com/out/bmc) ☕  
