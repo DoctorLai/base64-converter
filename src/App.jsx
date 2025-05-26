@@ -197,7 +197,7 @@ export default function App() {
         />
       </div>
 
-      <div className='footer'>
+      <footer>
         <p>
           Made with ❤️ by{' '}
           <a
@@ -214,7 +214,6 @@ export default function App() {
             href='https://justyy.com/out/bmc'
             target='_blank'
             rel='noopener noreferrer'
-            style={{ color: '#007bff', textDecoration: 'underline' }}
           >
             coffee
           </a>{' '}
@@ -240,7 +239,7 @@ export default function App() {
             Base64 Encoder/Decoder
           </a>
         </p>
-      </div>
+      </footer>
     </div>
   );
 }

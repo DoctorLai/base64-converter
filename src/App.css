@@ -33,7 +33,7 @@ body {
   transition: var(--transition-fade);
 }
 
-/* Light Theme Styles */
+/* Light Theme */
 .app {
   background-color: var(--color-light-bg);
   color: var(--color-light-text);
@@ -44,7 +44,7 @@ body {
   color: var(--color-light-text);
 }
 
-/* Dark Theme Styles */
+/* Dark Theme */
 .app.dark {
   background-color: var(--color-dark-bg);
   color: var(--color-dark-text);
@@ -85,7 +85,7 @@ textarea,
   color: var(--color-light-text);
 }
 
-/* Buttons */
+/* Buttons and File Button */
 button,
 .file-button {
   padding: 0.5rem 1rem;
@@ -96,9 +96,14 @@ button,
   background-color: #e0e0e0;
   color: #000;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* uniform button height */
+  box-sizing: border-box;
 }
 
-/* Dark Mode Button Override */
 .container.dark .file-button {
   background-color: #333;
   color: #fff;
@@ -134,7 +139,6 @@ button,
   color: var(--color-light-footer-text);
 }
 
-/* Footer Links */
 .footer a {
   color: var(--color-link);
   text-decoration: underline;
@@ -153,4 +157,30 @@ button,
 /* Hidden File Input */
 .hidden-file-input {
   display: none;
+}
+
+/* Footer element overrides */
+footer {
+  text-align: left;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+footer p {
+  margin: 0.5rem 0;
+  color: var(--color-light-footer-text);
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--color-link);
+}
+
+footer a:hover {
+  color: var(--color-link-hover);
+}
+
+footer a.link {
+  text-decoration: underline;
 }
