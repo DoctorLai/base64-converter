@@ -1,18 +1,22 @@
 :root {
+  /* Light Theme */
   --color-light-bg: #ffffff;
   --color-light-text: #000000;
-  --color-dark-bg: #121212;
-  --color-dark-text: #ffffff;
-
   --color-light-textarea-bg: #f0f0f0;
   --color-light-textarea-border: #ccc;
+  --color-light-footer-text: #555;
+
+  /* Dark Theme */
+  --color-dark-bg: #121212;
+  --color-dark-text: #ffffff;
   --color-dark-textarea-bg: #1e1e1e;
   --color-dark-textarea-border: #444;
 
-  --color-light-footer-text: #555;
+  /* Link Colors */
   --color-link: #007bff;
   --color-link-hover: #0056b3;
 
+  /* Transitions */
   --transition-fade: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -28,6 +32,7 @@ body {
   transition: var(--transition-fade);
 }
 
+/* Theme Background + Text Colors */
 .app {
   background-color: var(--color-light-bg);
   color: var(--color-light-text);
@@ -58,26 +63,26 @@ textarea,
   font-size: 1rem;
   border-radius: 4px;
   margin-bottom: 1rem;
-  transition: var(--transition-fade), border-color 0.3s ease;
   border: 1px solid var(--color-light-textarea-border);
   background-color: var(--color-light-textarea-bg);
   color: var(--color-light-text);
+  transition: var(--transition-fade), border-color 0.3s ease;
 }
 
 .app.dark textarea,
 .textarea.dark {
   background-color: var(--color-dark-textarea-bg);
   border-color: var(--color-dark-textarea-border);
-  color: #eee;
+  color: var(--color-dark-text);
 }
 
 .textarea.light {
   background-color: #fff;
-  color: var(--color-light-text);
   border-color: var(--color-light-textarea-border);
+  color: var(--color-light-text);
 }
 
-/* Button Styles */
+/* Buttons */
 button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -87,7 +92,7 @@ button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Button Row */
+/* Button Group */
 .button-row {
   display: flex;
   flex-wrap: wrap;
@@ -103,17 +108,29 @@ button {
   opacity: 0.6;
 }
 
-footer p {
+.footer p {
   margin: 0;
   font-size: 1rem;
   color: var(--color-light-footer-text);
 }
 
-footer a {
+/* Footer Links */
+.footer a {
   color: var(--color-link);
   text-decoration: underline;
+  transition: color 0.2s ease;
 }
 
-footer a:hover {
+.footer a:hover {
   color: var(--color-link-hover);
+}
+
+.footer .author-link {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Hidden File Input */
+.hidden-file-input {
+  display: none;
 }
