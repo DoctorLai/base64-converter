@@ -191,9 +191,8 @@ export default function App() {
 
         <input
           type='file'
-          accept='.txt,.json,.yaml,.yml,.b64,image/*,.pdf'
+          accept='*'
           ref={fileInputRef}
-          style={{ display: 'none' }}
           onChange={onFileChange}
         />
       </div>
@@ -205,7 +204,6 @@ export default function App() {
             href='https://github.com/doctorlai'
             target='_blank'
             rel='noopener noreferrer'
-            style={{ textDecoration: 'none', fontWeight: 'bold' }}
           >
             @justyy
           </a>
@@ -228,7 +226,6 @@ export default function App() {
             href='https://github.com/DoctorLai/base64-converter'
             target='_blank'
             rel='noopener noreferrer'
-            style={{ color: '#007bff', textDecoration: 'underline' }}
           >
             GitHub
           </a>
@@ -239,7 +236,6 @@ export default function App() {
             href='https://rot47.net/base64encoder.html'
             target='_blank'
             rel='noopener noreferrer'
-            style={{ color: '#007bff', textDecoration: 'underline' }}
           >
             Base64 Encoder/Decoder
           </a>
