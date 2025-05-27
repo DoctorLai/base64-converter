@@ -53,6 +53,8 @@ Use `prettier` to either check or format the source code:
 
 ```bash
 npm run format
+## fix the code style automatically
+npm run format:fix
 ```
 
 6. Open [http://localhost:5173/base64-converter/](http://localhost:5173/base64-converter/) in your browser.
