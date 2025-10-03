@@ -81,6 +81,39 @@ describe('Is likely text', () => {
     const result = isLikelyText(text);
     expect(result).toBe(true);
   });
+
+  if (
+    ('return false for mixed Chinese and English',
+    () => {
+      const mixedText = 'Hello, 你好!';
+      const result = isLikelyText(mixedText);
+      expect(result).toBe(false);
+    })
+  );
+
+  if (
+    ('return false for mixed Japanese and English',
+    () => {
+      const mixedText = 'Hello, こんにちは!';
+      const result = isLikelyText(mixedText);
+      expect(result).toBe(false);
+    })
+  );
+
+  if (
+    ('return false for mixed Korean and English',
+    () => {
+      const mixedText = 'Hello, 안녕하세요!';
+      const result = isLikelyText(mixedText);
+      expect(result).toBe(false);
+    })
+  );
+
+  it('returns true for tabs and newlines', () => {
+    const textWithWhitespace = 'Hello,\n\tRyan!';
+    const result = isLikelyText(textWithWhitespace);
+    expect(result).toBe(true);
+  });
 });
 
 describe('arrayBufferToBase64', () => {
