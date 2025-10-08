@@ -1,4 +1,5 @@
 function encodeToBase64(str) {
+  str = String(str); // Ensure input is string
   return btoa(str);
 }
 

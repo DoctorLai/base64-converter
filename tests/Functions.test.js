@@ -25,11 +25,18 @@ describe('Base64 converter', () => {
     const decoded = decodeFromBase64(base64Str);
     expect(decoded).toBe('Hello, Ryan!');
   });
+
   it('throws error for invalid Base64 string', () => {
     const invalidBase64 = 'SGVsbG8sIFJ5YW4h!';
     expect(() => decodeFromBase64(invalidBase64)).toThrow(
       'Invalid Base64 length'
     );
+  });
+
+  it('encodes non-string input to Base64', () => {
+    const numbers = 12345;
+    const encoded = encodeToBase64(numbers);
+    expect(encoded).toBe('MTIzNDU=');
   });
 });
 
@@ -127,6 +134,13 @@ describe('arrayBufferToBase64', () => {
     const invalidInput = 'Hello, Ryan!';
     expect(() => arrayBufferToBase64(invalidInput)).toThrow(
       'Input must be an ArrayBuffer'
+    );
+  });
+
+  it('throws error for invalid Base64 string in decodeFromBase64', () => {
+    const invalidBase64 = 'SGVsbG8sIFJ5YW4h!';
+    expect(() => decodeFromBase64(invalidBase64)).toThrow(
+      'Invalid Base64 length'
     );
   });
 });
