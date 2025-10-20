@@ -1,5 +1,5 @@
 # 🔤 Base64 Converter
-[![Base64 Converter (Built, Lint and Test)](https://github.com/DoctorLai/base64-converter/actions/workflows/ci.yaml/badge.svg)](https://github.com/DoctorLai/base64-converter/actions/workflows/ci.yaml)
+[![Base64 Converter (Built, Lint and Test)](https://github.com/DoctorLai/base64-converter/actions/workflows/ci.yaml/badge.svg)](https://github.com/DoctorLai/base64-converter/actions/workflows/ci.yaml) [![Run Tests with Coverage](https://github.com/DoctorLai/base64-converter/actions/workflows/coverage.yaml/badge.svg)](https://github.com/DoctorLai/base64-converter/actions/workflows/coverage.yaml)
  
 A simple web-based tool to **encode or decode Base64** strings or files. This app is built using React and runs directly in your browser. It provides an easy-to-use interface with two text areas—just paste your content and convert instantly, or upload files for encoding.
  
@@ -45,10 +45,16 @@ npm run dev
 
 4. Run tests:
 ```bash
+## or: npm test
 npm run test
 ```
 
-5. Coding format check:
+5. Test coverage:
+```bash
+npx vitest run --coverage
+```
+
+6. Coding format check:
 Use `prettier` to either check or format the source code:
 
 ```bash
