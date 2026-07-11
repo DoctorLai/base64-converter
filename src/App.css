@@ -53,6 +53,10 @@ body {
 .container.dark {
   background-color: #222;
   color: var(--color-dark-text);
+
+  /* Yellow links in dark mode for better contrast */
+  --color-link: #ffeb3b;
+  --color-link-hover: #fff59d;
 }
 
 /* Textareas */

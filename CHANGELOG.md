@@ -8,6 +8,15 @@ versioned packages, releases are dated (`YYYY.M.D`).
 
 ## [Unreleased]
 
+### Added
+
+- GitHub Pages deployment workflow, triggered by pushes to `main` and manual
+  dispatch (`.github/workflows/deploy.yml`).
+
+### Changed
+
+- Links are now rendered in yellow in dark mode for better contrast.
+
 ## [2026.7.11]
 
 ### Added

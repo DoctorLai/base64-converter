@@ -9,7 +9,7 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-5FA04E?logo=node.js&logoColor=white)](.nvmrc)
 [![Code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![JavaScript](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FDoctorLai%2Fbase64-converter%2Fmain%2Fbadges%2Fjavascript.json)](https://github.com/DoctorLai/base64-converter/search?l=javascript)
+[![JavaScript](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FDoctorLai%2Fbase64-converter%2Fbadges%2Fjavascript.json)](https://github.com/DoctorLai/base64-converter/search?l=javascript)
 
 <!-- Repository stats -->
 ![Top language](https://img.shields.io/github/languages/top/DoctorLai/base64-converter)
