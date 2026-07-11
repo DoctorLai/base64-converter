@@ -184,3 +184,63 @@ footer a:hover {
 footer a.link {
   text-decoration: underline;
 }
+
+/* Top bar: title + language selector */
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.language-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 1rem;
+}
+
+.language-select {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-light-textarea-border);
+  background-color: var(--color-light-textarea-bg);
+  color: var(--color-light-text);
+  cursor: pointer;
+}
+
+.container.dark .language-select {
+  background-color: var(--color-dark-textarea-bg);
+  border-color: var(--color-dark-textarea-border);
+  color: var(--color-dark-text);
+}
+
+/* Character / byte counts under each text area */
+.counts {
+  margin: -0.5rem 0 1rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-family: monospace;
+}
+
+/* Output area with an overlaid copy button */
+.output-row {
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  margin: 0;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  height: auto;
+}
+
+.copy-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

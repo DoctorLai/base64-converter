@@ -18,7 +18,7 @@ function decodeFromBase64(base64Str) {
 
   try {
     return atob(base64Str);
-  } catch (e) {
+  } catch {
     throw new Error('Invalid Base64 content');
   }
 }
@@ -39,7 +39,9 @@ function isLikelyText(content) {
     return false; // unsupported input type
   }
 
-  // Regex check: only printable ASCII characters and whitespace
+  // Regex check: only printable ASCII characters and whitespace.
+  // The control characters (tab, LF, CR) below are intentional.
+  // eslint-disable-next-line no-control-regex
   return /^[\x09\x0A\x0D\x20-\x7E]*$/.test(text);
 }
 

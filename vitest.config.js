@@ -11,12 +11,14 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "html", "json", "json-summary"],
+      include: ["src/**/*.{js,jsx}"],
+      exclude: ["src/main.jsx"],
       thresholds: {
-        lines: 50,
-        statements: 50,
-        functions: 30,
-        branches: 70,
-      },      
+        lines: 80,
+        statements: 80,
+        functions: 80,
+        branches: 80,
+      },
     },
   },
 });

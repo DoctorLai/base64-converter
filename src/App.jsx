@@ -5,23 +5,45 @@ import {
   isLikelyText,
   arrayBufferToBase64,
 } from './functions';
+import { t, isRTL, getLanguageOptions, resolveInitialLang } from './lang';
 import './App.css';
+
+const LANGUAGE_OPTIONS = getLanguageOptions();
+
+const byteLength = (text) => new TextEncoder().encode(text).length;
 
 export default function App() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
+  const [copied, setCopied] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
     return saved === 'true';
   });
+  const [lang, setLang] = useState(() =>
+    resolveInitialLang(
+      localStorage.getItem('lang'),
+      typeof navigator !== 'undefined' ? navigator.language : undefined
+    )
+  );
 
   const fileInputRef = useRef(null);
   const binaryOutputRef = useRef(null);
   const outputTypeRef = useRef(null);
 
+  const tr = (key) => t(lang, key);
+
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
+
+  useEffect(() => {
+    localStorage.setItem('lang', lang);
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = isRTL(lang) ? 'rtl' : 'ltr';
+    }
+  }, [lang]);
 
   const encodeBase64 = () => {
     try {
@@ -152,46 +174,108 @@ export default function App() {
     setDarkMode(!darkMode);
   };
 
+  const handleCopy = async () => {
+    if (!output) return;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(output);
+      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      setCopied(false);
+    }
+  };
+
   const clearFields = () => {
     setInput('');
     setOutput('');
+    setCopied(false);
     binaryOutputRef.current = null;
     outputTypeRef.current = null;
+  };
+
+  const handleInputKeyDown = (e) => {
+    if (e.key !== 'Tab') return;
+    e.preventDefault();
+    const target = e.target;
+    const start = target.selectionStart;
+    const end = target.selectionEnd;
+    setInput(input.slice(0, start) + '\t' + input.slice(end));
+    requestAnimationFrame(() => {
+      target.selectionStart = target.selectionEnd = start + 1;
+    });
   };
 
   return (
     <div className={`container ${darkMode ? 'dark' : 'light'}`}>
       <div>
-        <h1>🔐 Base64 Converter</h1>
+        <div className='top-bar'>
+          <h1>{`🔐 ${tr('title')}`}</h1>
+          <label className='language-picker'>
+            <span aria-hidden='true'>🌐</span>
+            <select
+              className='language-select'
+              aria-label={tr('language')}
+              value={lang}
+              onChange={(e) => setLang(e.target.value)}
+            >
+              {LANGUAGE_OPTIONS.map((opt) => (
+                <option key={opt.code} value={opt.code}>
+                  {opt.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
 
         <div className='button-row'>
-          <button onClick={encodeBase64}>→ Encode</button>
-          <button onClick={decodeBase64}>← Decode</button>
-          <button onClick={handleLoadFile}>📂 Load File</button>
-          <button onClick={handleSaveFile}>💾 Save File</button>
+          <button onClick={encodeBase64}>→ {tr('encode')}</button>
+          <button onClick={decodeBase64}>← {tr('decode')}</button>
+          <button onClick={handleLoadFile}>📂 {tr('loadFile')}</button>
+          <button onClick={handleSaveFile}>💾 {tr('saveFile')}</button>
           <button onClick={toggleDarkMode}>
-            {darkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
+            {darkMode ? `🌞 ${tr('lightMode')}` : `🌙 ${tr('darkMode')}`}
           </button>
-          <button onClick={clearFields}>🧹 Clear</button>
+          <button onClick={clearFields}>🧹 {tr('clear')}</button>
         </div>
 
         <textarea
           className={`textarea ${darkMode ? 'dark' : 'light'}`}
-          placeholder='Input here...'
+          placeholder={tr('inputPlaceholder')}
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleInputKeyDown}
         />
+        <div className='counts' data-testid='input-count'>
+          {input.length} {tr('characters')} · {byteLength(input)} {tr('bytes')}
+        </div>
 
-        <textarea
-          className={`textarea ${darkMode ? 'dark' : 'light'}`}
-          placeholder='Output appears here...'
-          value={output}
-          readOnly
-        />
+        <div className='output-row'>
+          <textarea
+            className={`textarea ${darkMode ? 'dark' : 'light'}`}
+            placeholder={tr('outputPlaceholder')}
+            value={output}
+            readOnly
+          />
+          <button
+            className='copy-button'
+            onClick={handleCopy}
+            disabled={!output}
+          >
+            📋 {copied ? tr('copied') : tr('copy')}
+          </button>
+        </div>
+        <div className='counts' data-testid='output-count'>
+          {output.length} {tr('characters')} · {byteLength(output)}{' '}
+          {tr('bytes')}
+        </div>
 
         <input
           type='file'
           accept='*'
+          aria-label={tr('loadFile')}
+          className='hidden-file-input'
           ref={fileInputRef}
           onChange={onFileChange}
         />
@@ -211,7 +295,7 @@ export default function App() {
         <p>
           If you found this useful, consider buying me a{' '}
           <a
-            href='https://justyy.com/out/bmc'
+            href='https://buymeacoffee.com/y0btg5r'
             target='_blank'
             rel='noopener noreferrer'
           >
