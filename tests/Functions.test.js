@@ -33,6 +33,16 @@ describe('Base64 converter', () => {
     );
   });
 
+  it('throws error for non-string input to decodeFromBase64', () => {
+    expect(() => decodeFromBase64(12345)).toThrow('Input must be a string');
+  });
+
+  it('throws error for invalid Base64 content that passes the length check', () => {
+    // Right length (multiple of 4) but not valid Base64 characters,
+    // so atob() itself throws.
+    expect(() => decodeFromBase64('!!!!')).toThrow('Invalid Base64 content');
+  });
+
   it('encodes non-string input to Base64', () => {
     const numbers = 12345;
     const encoded = encodeToBase64(numbers);
