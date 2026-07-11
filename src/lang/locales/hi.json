@@ -1,0 +1,19 @@
+{
+  "title": "Base64 कनवर्टर",
+  "encode": "एन्कोड",
+  "decode": "डिकोड",
+  "loadFile": "फ़ाइल लोड करें",
+  "saveFile": "फ़ाइल सहेजें",
+  "lightMode": "लाइट मोड",
+  "darkMode": "डार्क मोड",
+  "clear": "साफ़ करें",
+  "copy": "कॉपी",
+  "copied": "कॉपी किया गया!",
+  "inputPlaceholder": "यहाँ इनपुट करें...",
+  "outputPlaceholder": "आउटपुट यहाँ दिखेगा...",
+  "inputLabel": "इनपुट",
+  "outputLabel": "आउटपुट",
+  "characters": "अक्षर",
+  "bytes": "बाइट्स",
+  "language": "भाषा"
+}

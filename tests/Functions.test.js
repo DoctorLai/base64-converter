@@ -33,6 +33,16 @@ describe('Base64 converter', () => {
     );
   });
 
+  it('throws error for non-string input to decodeFromBase64', () => {
+    expect(() => decodeFromBase64(12345)).toThrow('Input must be a string');
+  });
+
+  it('throws error for invalid Base64 content that passes the length check', () => {
+    // Right length (multiple of 4) but not valid Base64 characters,
+    // so atob() itself throws.
+    expect(() => decodeFromBase64('!!!!')).toThrow('Invalid Base64 content');
+  });
+
   it('encodes non-string input to Base64', () => {
     const numbers = 12345;
     const encoded = encodeToBase64(numbers);
@@ -65,19 +75,19 @@ describe('Is likely text', () => {
     expect(result).toBe(false);
   });
 
-  it('returns true for Chinese Characters', () => {
+  it('returns false for Chinese Characters', () => {
     const chineseText = '你好，Ryan！';
     const result = isLikelyText(chineseText);
     expect(result).toBe(false);
   });
 
-  it('returns true for Japanese Characters', () => {
+  it('returns false for Japanese Characters', () => {
     const japaneseText = 'こんにちは、Ryan！';
     const result = isLikelyText(japaneseText);
     expect(result).toBe(false);
   });
 
-  it('returns true for Korean Characters', () => {
+  it('returns false for Korean Characters', () => {
     const koreanText = '안녕하세요, Ryan!';
     const result = isLikelyText(koreanText);
     expect(result).toBe(false);
@@ -89,32 +99,23 @@ describe('Is likely text', () => {
     expect(result).toBe(true);
   });
 
-  if (
-    ('return false for mixed Chinese and English',
-    () => {
-      const mixedText = 'Hello, 你好!';
-      const result = isLikelyText(mixedText);
-      expect(result).toBe(false);
-    })
-  );
+  it('returns false for mixed Chinese and English', () => {
+    const mixedText = 'Hello, 你好!';
+    const result = isLikelyText(mixedText);
+    expect(result).toBe(false);
+  });
 
-  if (
-    ('return false for mixed Japanese and English',
-    () => {
-      const mixedText = 'Hello, こんにちは!';
-      const result = isLikelyText(mixedText);
-      expect(result).toBe(false);
-    })
-  );
+  it('returns false for mixed Japanese and English', () => {
+    const mixedText = 'Hello, こんにちは!';
+    const result = isLikelyText(mixedText);
+    expect(result).toBe(false);
+  });
 
-  if (
-    ('return false for mixed Korean and English',
-    () => {
-      const mixedText = 'Hello, 안녕하세요!';
-      const result = isLikelyText(mixedText);
-      expect(result).toBe(false);
-    })
-  );
+  it('returns false for mixed Korean and English', () => {
+    const mixedText = 'Hello, 안녕하세요!';
+    const result = isLikelyText(mixedText);
+    expect(result).toBe(false);
+  });
 
   it('returns true for tabs and newlines', () => {
     const textWithWhitespace = 'Hello,\n\tRyan!';

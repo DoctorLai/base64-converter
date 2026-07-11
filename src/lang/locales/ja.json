@@ -1,0 +1,19 @@
+{
+  "title": "Base64 コンバーター",
+  "encode": "エンコード",
+  "decode": "デコード",
+  "loadFile": "ファイルを読み込む",
+  "saveFile": "ファイルを保存",
+  "lightMode": "ライトモード",
+  "darkMode": "ダークモード",
+  "clear": "クリア",
+  "copy": "コピー",
+  "copied": "コピーしました！",
+  "inputPlaceholder": "ここに入力...",
+  "outputPlaceholder": "出力がここに表示されます...",
+  "inputLabel": "入力",
+  "outputLabel": "出力",
+  "characters": "文字",
+  "bytes": "バイト",
+  "language": "言語"
+}

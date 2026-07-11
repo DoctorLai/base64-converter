@@ -1,0 +1,66 @@
+name: Language Badge
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Needs write access to publish the badge JSON to the dedicated `badges` branch.
+permissions:
+  contents: write
+
+jobs:
+  javascript-percentage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compute JavaScript percentage
+        id: compute
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          langs=$(gh api "repos/${{ github.repository }}/languages")
+          total=$(echo "$langs" | jq '[.[]] | add // 0')
+          if [ "$total" -eq 0 ]; then
+            echo "No language data returned; skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          js=$(echo "$langs" | jq '((.JavaScript // 0) + (.TypeScript // 0))')
+          pct=$(awk "BEGIN { printf \"%.1f\", ($js / $total) * 100 }")
+          color=$(awk "BEGIN { print ($pct >= 90) ? \"brightgreen\" : (($pct >= 70) ? \"green\" : \"yellow\") }")
+          echo "JavaScript: ${pct}% (color ${color})"
+          jq -n --arg msg "${pct}%" --arg color "$color" \
+            '{schemaVersion: 1, label: "JavaScript", message: $msg, color: $color}' \
+            > "${RUNNER_TEMP}/javascript.json"
+          cat "${RUNNER_TEMP}/javascript.json"
+
+      - name: Publish badge to the badges branch
+        if: steps.compute.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          repo_url="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          work="${RUNNER_TEMP}/badges-branch"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code --heads "$repo_url" badges >/dev/null 2>&1; then
+            # The badges branch already exists: clone just that branch.
+            git clone --depth 1 --branch badges --single-branch "$repo_url" "$work"
+          else
+            # First run: create an orphan badges branch with no history.
+            git clone --depth 1 "$repo_url" "$work"
+            git -C "$work" checkout --orphan badges
+            git -C "$work" rm -rf . >/dev/null 2>&1 || true
+          fi
+
+          cp "${RUNNER_TEMP}/javascript.json" "$work/javascript.json"
+          git -C "$work" add javascript.json
+          if git -C "$work" diff --cached --quiet; then
+            echo "Badge unchanged; nothing to push."
+          else
+            git -C "$work" commit -m "chore: update JavaScript percentage badge [skip ci]"
+            git -C "$work" push origin badges
+          fi

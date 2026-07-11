@@ -1,0 +1,31 @@
+# Normalize line endings to LF on checkin, auto for checkout.
+* text=auto eol=lf
+
+# Explicitly declare text files.
+*.js       text
+*.jsx      text
+*.json     text
+*.css      text
+*.html     text
+*.md       text
+*.yml      text
+*.yaml     text
+*.svg      text
+
+# Binary files that must never be modified.
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.ico      binary
+*.woff     binary
+*.woff2    binary
+*.bin      binary
+
+# Keep generated/vendored files out of language stats and diffs.
+package-lock.json  linguist-generated=true -diff
+dist/**            linguist-generated=true
+coverage/**        linguist-generated=true
+
+# Treat these as documentation for language stats.
+*.md       linguist-documentation

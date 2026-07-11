@@ -1,0 +1,19 @@
+{
+  "title": "Base64 변환기",
+  "encode": "인코딩",
+  "decode": "디코딩",
+  "loadFile": "파일 불러오기",
+  "saveFile": "파일 저장",
+  "lightMode": "라이트 모드",
+  "darkMode": "다크 모드",
+  "clear": "지우기",
+  "copy": "복사",
+  "copied": "복사됨!",
+  "inputPlaceholder": "여기에 입력...",
+  "outputPlaceholder": "출력이 여기에 표시됩니다...",
+  "inputLabel": "입력",
+  "outputLabel": "출력",
+  "characters": "자",
+  "bytes": "바이트",
+  "language": "언어"
+}
