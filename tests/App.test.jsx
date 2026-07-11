@@ -30,6 +30,12 @@ describe('App rendering', () => {
     );
     expect(screen.getByRole('button', { name: /Encode/ })).toBeInTheDocument();
   });
+
+  it('exposes accessible names for the input and output areas', () => {
+    render(<App />);
+    expect(screen.getByRole('textbox', { name: 'Input' })).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'Output' })).toBeInTheDocument();
+  });
 });
 
 describe('Encoding and decoding', () => {
@@ -52,6 +58,7 @@ describe('Encoding and decoding', () => {
   });
 
   it('shows an error message for invalid Base64 on decode', () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
     render(<App />);
     fireEvent.change(screen.getByPlaceholderText(INPUT), {
       target: { value: 'not-valid-base64!' },

@@ -243,6 +243,7 @@ export default function App() {
         <textarea
           className={`textarea ${darkMode ? 'dark' : 'light'}`}
           placeholder={tr('inputPlaceholder')}
+          aria-label={tr('inputLabel')}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleInputKeyDown}
@@ -255,6 +256,7 @@ export default function App() {
           <textarea
             className={`textarea ${darkMode ? 'dark' : 'light'}`}
             placeholder={tr('outputPlaceholder')}
+            aria-label={tr('outputLabel')}
             value={output}
             readOnly
           />
