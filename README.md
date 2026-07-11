@@ -33,7 +33,7 @@ This tool also supports decoding of `.b64` files into their original binary form
 - **Base64 Encode/Decode**: Convert plain text to Base64 and vice versa.  
 - **File Upload**: Upload files to encode or `.b64` files to decode.
 - **Download Results**: Download the converted content as `.b64`, `.bin`, or `.txt`.  
-- **Copy to Clipboard**: Copy the output with a single click.  
+- **Copy to Clipboard**: Copy the input or output with a single click.  
 - **Live Counts**: See character and UTF-8 byte counts as you type.  
 - **26 Languages**: Switch the interface language on the fly (with right-to-left support).  
 - **Dark Mode**: Toggle between light and dark themes.  

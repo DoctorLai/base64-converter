@@ -229,7 +229,8 @@ footer a.link {
   font-family: monospace;
 }
 
-/* Output area with an overlaid copy button */
+/* Input/output areas with an overlaid copy button */
+.input-row,
 .output-row {
   position: relative;
 }
@@ -247,4 +248,12 @@ footer a.link {
 .copy-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* App version tag in the footer */
+.app-version {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  font-family: monospace;
 }

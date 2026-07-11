@@ -14,6 +14,8 @@ versioned packages, releases are dated (`YYYY.M.D`).
   dispatch (`.github/workflows/deploy.yml`).
 - **Traditional Chinese (`zh-TW`)** translation, bringing the interface to
   26 languages.
+- **Copy button for the source input**, in addition to the output.
+- The **app version** is now shown in the footer.
 
 ### Changed
 
