@@ -36,6 +36,11 @@ describe('App rendering', () => {
     expect(screen.getByRole('textbox', { name: 'Input' })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Output' })).toBeInTheDocument();
   });
+
+  it('shows the app version', () => {
+    render(<App />);
+    expect(screen.getByTestId('app-version').textContent).toMatch(/^v\d/);
+  });
 });
 
 describe('Encoding and decoding', () => {
@@ -133,9 +138,10 @@ describe('Internationalization', () => {
 });
 
 describe('Copy to clipboard', () => {
-  it('is disabled when there is no output', () => {
+  it('disables both copy buttons when the fields are empty', () => {
     render(<App />);
-    expect(screen.getByRole('button', { name: /Copy/ })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Copy Input' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Copy Output' })).toBeDisabled();
   });
 
   it('copies the output and shows confirmation', async () => {
@@ -149,8 +155,25 @@ describe('Copy to clipboard', () => {
       target: { value: 'abc' },
     });
     fireEvent.click(screen.getByRole('button', { name: /Encode/ }));
-    fireEvent.click(screen.getByRole('button', { name: /Copy/ }));
+    fireEvent.click(screen.getByRole('button', { name: 'Copy Output' }));
     expect(writeText).toHaveBeenCalledWith('YWJj');
+    expect(
+      await screen.findByRole('button', { name: /Copied/ })
+    ).toBeInTheDocument();
+  });
+
+  it('copies the source input text', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText },
+      configurable: true,
+    });
+    render(<App />);
+    fireEvent.change(screen.getByPlaceholderText(INPUT), {
+      target: { value: 'hello source' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Copy Input' }));
+    expect(writeText).toHaveBeenCalledWith('hello source');
     expect(
       await screen.findByRole('button', { name: /Copied/ })
     ).toBeInTheDocument();

@@ -6,6 +6,7 @@ import {
   arrayBufferToBase64,
 } from './functions';
 import { t, isRTL, getLanguageOptions, resolveInitialLang } from './lang';
+import pkg from '../package.json';
 import './App.css';
 
 const LANGUAGE_OPTIONS = getLanguageOptions();
@@ -15,7 +16,7 @@ const byteLength = (text) => new TextEncoder().encode(text).length;
 export default function App() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
-  const [copied, setCopied] = useState(false);
+  const [copiedField, setCopiedField] = useState(null);
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
     return saved === 'true';
@@ -174,23 +175,25 @@ export default function App() {
     setDarkMode(!darkMode);
   };
 
-  const handleCopy = async () => {
-    if (!output) return;
+  const copyToClipboard = async (text, field) => {
+    if (!text) return;
     try {
       if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(output);
+        await navigator.clipboard.writeText(text);
       }
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
+      setCopiedField(field);
+      setTimeout(() => {
+        setCopiedField((current) => (current === field ? null : current));
+      }, 1500);
     } catch {
-      setCopied(false);
+      setCopiedField(null);
     }
   };
 
   const clearFields = () => {
     setInput('');
     setOutput('');
-    setCopied(false);
+    setCopiedField(null);
     binaryOutputRef.current = null;
     outputTypeRef.current = null;
   };
@@ -240,14 +243,28 @@ export default function App() {
           <button onClick={clearFields}>🧹 {tr('clear')}</button>
         </div>
 
-        <textarea
-          className={`textarea ${darkMode ? 'dark' : 'light'}`}
-          placeholder={tr('inputPlaceholder')}
-          aria-label={tr('inputLabel')}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleInputKeyDown}
-        />
+        <div className='input-row'>
+          <textarea
+            className={`textarea ${darkMode ? 'dark' : 'light'}`}
+            placeholder={tr('inputPlaceholder')}
+            aria-label={tr('inputLabel')}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleInputKeyDown}
+          />
+          <button
+            className='copy-button'
+            aria-label={
+              copiedField === 'input'
+                ? tr('copied')
+                : `${tr('copy')} ${tr('inputLabel')}`
+            }
+            onClick={() => copyToClipboard(input, 'input')}
+            disabled={!input}
+          >
+            📋 {copiedField === 'input' ? tr('copied') : tr('copy')}
+          </button>
+        </div>
         <div className='counts' data-testid='input-count'>
           {input.length} {tr('characters')} · {byteLength(input)} {tr('bytes')}
         </div>
@@ -262,10 +279,15 @@ export default function App() {
           />
           <button
             className='copy-button'
-            onClick={handleCopy}
+            aria-label={
+              copiedField === 'output'
+                ? tr('copied')
+                : `${tr('copy')} ${tr('outputLabel')}`
+            }
+            onClick={() => copyToClipboard(output, 'output')}
             disabled={!output}
           >
-            📋 {copied ? tr('copied') : tr('copy')}
+            📋 {copiedField === 'output' ? tr('copied') : tr('copy')}
           </button>
         </div>
         <div className='counts' data-testid='output-count'>
@@ -324,6 +346,9 @@ export default function App() {
           >
             Base64 Encoder/Decoder
           </a>
+        </p>
+        <p className='app-version' data-testid='app-version'>
+          v{pkg.version}
         </p>
       </footer>
     </div>
