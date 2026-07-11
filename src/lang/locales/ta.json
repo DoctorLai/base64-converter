@@ -1,0 +1,19 @@
+{
+  "title": "Base64 மாற்றி",
+  "encode": "குறியாக்கம்",
+  "decode": "மறைகுறியாக்கம்",
+  "loadFile": "கோப்பை ஏற்று",
+  "saveFile": "கோப்பை சேமி",
+  "lightMode": "ஒளி பயன்முறை",
+  "darkMode": "இருள் பயன்முறை",
+  "clear": "அழி",
+  "copy": "நகலெடு",
+  "copied": "நகலெடுக்கப்பட்டது!",
+  "inputPlaceholder": "இங்கே உள்ளிடவும்...",
+  "outputPlaceholder": "வெளியீடு இங்கே தோன்றும்...",
+  "inputLabel": "உள்ளீடு",
+  "outputLabel": "வெளியீடு",
+  "characters": "எழுத்துகள்",
+  "bytes": "பைட்டுகள்",
+  "language": "மொழி"
+}

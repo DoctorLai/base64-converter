@@ -1,0 +1,19 @@
+{
+  "title": "Base64 కన్వర్టర్",
+  "encode": "ఎన్‌కోడ్",
+  "decode": "డీకోడ్",
+  "loadFile": "ఫైల్ లోడ్ చేయి",
+  "saveFile": "ఫైల్ సేవ్ చేయి",
+  "lightMode": "లైట్ మోడ్",
+  "darkMode": "డార్క్ మోడ్",
+  "clear": "క్లియర్",
+  "copy": "కాపీ",
+  "copied": "కాపీ అయింది!",
+  "inputPlaceholder": "ఇక్కడ నమోదు చేయండి...",
+  "outputPlaceholder": "అవుట్‌పుట్ ఇక్కడ కనిపిస్తుంది...",
+  "inputLabel": "ఇన్‌పుట్",
+  "outputLabel": "అవుట్‌పుట్",
+  "characters": "అక్షరాలు",
+  "bytes": "బైట్‌లు",
+  "language": "భాష"
+}

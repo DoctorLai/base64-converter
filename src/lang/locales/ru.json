@@ -1,0 +1,19 @@
+{
+  "title": "Конвертер Base64",
+  "encode": "Кодировать",
+  "decode": "Декодировать",
+  "loadFile": "Загрузить файл",
+  "saveFile": "Сохранить файл",
+  "lightMode": "Светлая тема",
+  "darkMode": "Тёмная тема",
+  "clear": "Очистить",
+  "copy": "Копировать",
+  "copied": "Скопировано!",
+  "inputPlaceholder": "Введите здесь...",
+  "outputPlaceholder": "Результат появится здесь...",
+  "inputLabel": "Ввод",
+  "outputLabel": "Вывод",
+  "characters": "символов",
+  "bytes": "байт",
+  "language": "Язык"
+}

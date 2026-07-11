@@ -1,0 +1,19 @@
+{
+  "title": "Base64 ਪਰਿਵਰਤਕ",
+  "encode": "ਇਨਕੋਡ",
+  "decode": "ਡੀਕੋਡ",
+  "loadFile": "ਫਾਈਲ ਲੋਡ ਕਰੋ",
+  "saveFile": "ਫਾਈਲ ਸੰਭਾਲੋ",
+  "lightMode": "ਲਾਈਟ ਮੋਡ",
+  "darkMode": "ਡਾਰਕ ਮੋਡ",
+  "clear": "ਸਾਫ਼ ਕਰੋ",
+  "copy": "ਕਾਪੀ",
+  "copied": "ਕਾਪੀ ਹੋ ਗਿਆ!",
+  "inputPlaceholder": "ਇੱਥੇ ਦਾਖਲ ਕਰੋ...",
+  "outputPlaceholder": "ਆਉਟਪੁੱਟ ਇੱਥੇ ਦਿਖਾਈ ਦੇਵੇਗਾ...",
+  "inputLabel": "ਇਨਪੁੱਟ",
+  "outputLabel": "ਆਉਟਪੁੱਟ",
+  "characters": "ਅੱਖਰ",
+  "bytes": "ਬਾਈਟ",
+  "language": "ਭਾਸ਼ਾ"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "ตัวแปลง Base64",
+  "encode": "เข้ารหัส",
+  "decode": "ถอดรหัส",
+  "loadFile": "โหลดไฟล์",
+  "saveFile": "บันทึกไฟล์",
+  "lightMode": "โหมดสว่าง",
+  "darkMode": "โหมดมืด",
+  "clear": "ล้าง",
+  "copy": "คัดลอก",
+  "copied": "คัดลอกแล้ว!",
+  "inputPlaceholder": "ป้อนที่นี่...",
+  "outputPlaceholder": "ผลลัพธ์จะแสดงที่นี่...",
+  "inputLabel": "อินพุต",
+  "outputLabel": "เอาต์พุต",
+  "characters": "อักขระ",
+  "bytes": "ไบต์",
+  "language": "ภาษา"
+}

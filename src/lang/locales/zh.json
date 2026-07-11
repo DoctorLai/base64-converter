@@ -1,0 +1,19 @@
+{
+  "title": "Base64 转换器",
+  "encode": "编码",
+  "decode": "解码",
+  "loadFile": "加载文件",
+  "saveFile": "保存文件",
+  "lightMode": "浅色模式",
+  "darkMode": "深色模式",
+  "clear": "清除",
+  "copy": "复制",
+  "copied": "已复制！",
+  "inputPlaceholder": "在此输入...",
+  "outputPlaceholder": "输出显示在此处...",
+  "inputLabel": "输入",
+  "outputLabel": "输出",
+  "characters": "字符",
+  "bytes": "字节",
+  "language": "语言"
+}

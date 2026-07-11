@@ -1,0 +1,19 @@
+{
+  "title": "محول Base64",
+  "encode": "ترميز",
+  "decode": "فك الترميز",
+  "loadFile": "تحميل ملف",
+  "saveFile": "حفظ الملف",
+  "lightMode": "الوضع الفاتح",
+  "darkMode": "الوضع الداكن",
+  "clear": "مسح",
+  "copy": "نسخ",
+  "copied": "تم النسخ!",
+  "inputPlaceholder": "أدخل هنا...",
+  "outputPlaceholder": "تظهر النتيجة هنا...",
+  "inputLabel": "إدخال",
+  "outputLabel": "إخراج",
+  "characters": "حرف",
+  "bytes": "بايت",
+  "language": "اللغة"
+}

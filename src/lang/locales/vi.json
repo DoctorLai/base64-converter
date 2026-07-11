@@ -1,0 +1,19 @@
+{
+  "title": "Bộ chuyển đổi Base64",
+  "encode": "Mã hóa",
+  "decode": "Giải mã",
+  "loadFile": "Tải tệp",
+  "saveFile": "Lưu tệp",
+  "lightMode": "Chế độ sáng",
+  "darkMode": "Chế độ tối",
+  "clear": "Xóa",
+  "copy": "Sao chép",
+  "copied": "Đã sao chép!",
+  "inputPlaceholder": "Nhập vào đây...",
+  "outputPlaceholder": "Kết quả hiển thị ở đây...",
+  "inputLabel": "Đầu vào",
+  "outputLabel": "Đầu ra",
+  "characters": "ký tự",
+  "bytes": "byte",
+  "language": "Ngôn ngữ"
+}

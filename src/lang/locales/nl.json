@@ -1,0 +1,19 @@
+{
+  "title": "Base64-converter",
+  "encode": "Coderen",
+  "decode": "Decoderen",
+  "loadFile": "Bestand laden",
+  "saveFile": "Bestand opslaan",
+  "lightMode": "Lichte modus",
+  "darkMode": "Donkere modus",
+  "clear": "Wissen",
+  "copy": "Kopiëren",
+  "copied": "Gekopieerd!",
+  "inputPlaceholder": "Voer hier in...",
+  "outputPlaceholder": "Uitvoer verschijnt hier...",
+  "inputLabel": "Invoer",
+  "outputLabel": "Uitvoer",
+  "characters": "tekens",
+  "bytes": "bytes",
+  "language": "Taal"
+}

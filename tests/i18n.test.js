@@ -56,11 +56,24 @@ describe('i18n helpers', () => {
     expect(resolveInitialLang(null, 'xx-YY')).toBe(DEFAULT_LANG);
     expect(resolveInitialLang(null, undefined)).toBe(DEFAULT_LANG);
   });
+
+  it('supports Traditional Chinese (zh-TW) distinctly from Simplified (zh)', () => {
+    expect(isSupported('zh-TW')).toBe(true);
+    expect(t('zh-TW', 'title')).toBe('Base64 轉換器');
+    expect(t('zh', 'title')).toBe('Base64 转换器');
+    expect(t('zh-TW', 'encode')).toBe('編碼');
+  });
+
+  it('resolves region-specific browser languages', () => {
+    expect(resolveInitialLang(null, 'zh-TW')).toBe('zh-TW');
+    expect(resolveInitialLang(null, 'zh-tw')).toBe('zh-TW');
+    expect(resolveInitialLang(null, 'zh-CN')).toBe('zh');
+  });
 });
 
 describe('translation tables', () => {
-  it('include exactly 25 languages', () => {
-    expect(Object.keys(translations)).toHaveLength(25);
+  it('include exactly 26 languages', () => {
+    expect(Object.keys(translations)).toHaveLength(26);
   });
 
   it('define every English key in each locale', () => {

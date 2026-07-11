@@ -1,0 +1,19 @@
+{
+  "title": "Base64 کنورٹر",
+  "encode": "انکوڈ",
+  "decode": "ڈی کوڈ",
+  "loadFile": "فائل لوڈ کریں",
+  "saveFile": "فائل محفوظ کریں",
+  "lightMode": "روشن موڈ",
+  "darkMode": "تاریک موڈ",
+  "clear": "صاف کریں",
+  "copy": "کاپی",
+  "copied": "کاپی ہو گیا!",
+  "inputPlaceholder": "یہاں درج کریں...",
+  "outputPlaceholder": "نتیجہ یہاں ظاہر ہوگا...",
+  "inputLabel": "ان پٹ",
+  "outputLabel": "آؤٹ پٹ",
+  "characters": "حروف",
+  "bytes": "بائٹس",
+  "language": "زبان"
+}

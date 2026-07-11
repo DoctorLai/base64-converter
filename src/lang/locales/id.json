@@ -1,0 +1,19 @@
+{
+  "title": "Konverter Base64",
+  "encode": "Enkode",
+  "decode": "Dekode",
+  "loadFile": "Muat Berkas",
+  "saveFile": "Simpan Berkas",
+  "lightMode": "Mode Terang",
+  "darkMode": "Mode Gelap",
+  "clear": "Bersihkan",
+  "copy": "Salin",
+  "copied": "Tersalin!",
+  "inputPlaceholder": "Masukkan di sini...",
+  "outputPlaceholder": "Keluaran muncul di sini...",
+  "inputLabel": "Masukan",
+  "outputLabel": "Keluaran",
+  "characters": "karakter",
+  "bytes": "bita",
+  "language": "Bahasa"
+}

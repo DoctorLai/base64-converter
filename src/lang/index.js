@@ -67,8 +67,17 @@ export function getLanguageOptions() {
 export function resolveInitialLang(saved, browserLang) {
   if (saved && isSupported(saved)) return saved;
   if (browserLang) {
-    const short = browserLang.slice(0, 2).toLowerCase();
-    if (isSupported(short)) return short;
+    // Exact match first (e.g. "zh-TW"), then a normalized BCP-47 form
+    // (e.g. "zh-tw" -> "zh-TW"), then the 2-letter language prefix ("zh").
+    if (isSupported(browserLang)) return browserLang;
+    const [primary, region] = browserLang.split('-');
+    if (region) {
+      const bcp47 = `${primary.toLowerCase()}-${region.toUpperCase()}`;
+      if (isSupported(bcp47)) return bcp47;
+    }
+    if (primary && isSupported(primary.toLowerCase())) {
+      return primary.toLowerCase();
+    }
   }
   return DEFAULT_LANG;
 }

@@ -1,0 +1,19 @@
+{
+  "title": "Base64-Konverter",
+  "encode": "Kodieren",
+  "decode": "Dekodieren",
+  "loadFile": "Datei laden",
+  "saveFile": "Datei speichern",
+  "lightMode": "Heller Modus",
+  "darkMode": "Dunkler Modus",
+  "clear": "Löschen",
+  "copy": "Kopieren",
+  "copied": "Kopiert!",
+  "inputPlaceholder": "Hier eingeben...",
+  "outputPlaceholder": "Ausgabe erscheint hier...",
+  "inputLabel": "Eingabe",
+  "outputLabel": "Ausgabe",
+  "characters": "Zeichen",
+  "bytes": "Bytes",
+  "language": "Sprache"
+}

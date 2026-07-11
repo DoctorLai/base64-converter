@@ -24,7 +24,7 @@
 [![Open issues](https://img.shields.io/github/issues/DoctorLai/base64-converter)](https://github.com/DoctorLai/base64-converter/issues)
 [![Open PRs](https://img.shields.io/github/issues-pr/DoctorLai/base64-converter)](https://github.com/DoctorLai/base64-converter/pulls)
  
-A simple, privacy-friendly web tool to **encode or decode Base64** strings and files, right in your browser. Built with React, it offers a clean two-textarea interface — paste content to convert instantly, or upload files for encoding. The interface is available in **25 languages**, with light/dark themes, live counts, and one-click copy. Your data never leaves your device.
+A simple, privacy-friendly web tool to **encode or decode Base64** strings and files, right in your browser. Built with React, it offers a clean two-textarea interface — paste content to convert instantly, or upload files for encoding. The interface is available in **26 languages**, with light/dark themes, live counts, and one-click copy. Your data never leaves your device.
  
 This tool also supports decoding of `.b64` files into their original binary form.
 
@@ -35,7 +35,7 @@ This tool also supports decoding of `.b64` files into their original binary form
 - **Download Results**: Download the converted content as `.b64`, `.bin`, or `.txt`.  
 - **Copy to Clipboard**: Copy the output with a single click.  
 - **Live Counts**: See character and UTF-8 byte counts as you type.  
-- **25 Languages**: Switch the interface language on the fly (with right-to-left support).  
+- **26 Languages**: Switch the interface language on the fly (with right-to-left support).  
 - **Dark Mode**: Toggle between light and dark themes.  
 - **Tab Support**: Proper indentation when using the "Tab" key in text areas.  
 - **Simple and Intuitive UI**: Clean interface that's beginner-friendly.  

@@ -1,0 +1,19 @@
+{
+  "title": "Base64 রূপান্তরকারী",
+  "encode": "এনকোড",
+  "decode": "ডিকোড",
+  "loadFile": "ফাইল লোড করুন",
+  "saveFile": "ফাইল সংরক্ষণ করুন",
+  "lightMode": "লাইট মোড",
+  "darkMode": "ডার্ক মোড",
+  "clear": "পরিষ্কার",
+  "copy": "কপি",
+  "copied": "কপি হয়েছে!",
+  "inputPlaceholder": "এখানে ইনপুট দিন...",
+  "outputPlaceholder": "আউটপুট এখানে দেখা যাবে...",
+  "inputLabel": "ইনপুট",
+  "outputLabel": "আউটপুট",
+  "characters": "অক্ষর",
+  "bytes": "বাইট",
+  "language": "ভাষা"
+}

@@ -82,13 +82,17 @@ uphold it.
 
 ## Adding a Translation
 
-UI strings live in [`src/lang/translations.js`](src/lang/translations.js). To add
-or improve a language:
+UI strings live in one JSON file per language under
+[`src/lang/locales/`](src/lang/locales) (for example, `en.json`, `zh-TW.json`).
+To add or improve a language:
 
-1. Find the language code (ISO 639-1) in the `translations` object, or add a new
-   entry.
-2. Provide a value for **every** key present in the English (`en`) entry.
-3. Run `npm run test` — the i18n tests verify that each locale defines all keys.
+1. Copy [`src/lang/locales/en.json`](src/lang/locales/en.json) to
+   `src/lang/locales/<code>.json` (using the language's BCP-47 code, e.g. `sv`
+   or `zh-TW`) and translate every value.
+2. Add the language's native display name to `languageNames` in
+   [`src/lang/translations.js`](src/lang/translations.js) — and add its code to
+   `RTL_LANGUAGES` there if it is written right-to-left.
+3. Run `npm run test` — the i18n tests verify that every locale defines all keys.
 
 ## Commit Messages
 

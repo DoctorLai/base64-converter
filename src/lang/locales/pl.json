@@ -1,0 +1,19 @@
+{
+  "title": "Konwerter Base64",
+  "encode": "Koduj",
+  "decode": "Dekoduj",
+  "loadFile": "Wczytaj plik",
+  "saveFile": "Zapisz plik",
+  "lightMode": "Tryb jasny",
+  "darkMode": "Tryb ciemny",
+  "clear": "Wyczyść",
+  "copy": "Kopiuj",
+  "copied": "Skopiowano!",
+  "inputPlaceholder": "Wpisz tutaj...",
+  "outputPlaceholder": "Wynik pojawi się tutaj...",
+  "inputLabel": "Wejście",
+  "outputLabel": "Wyjście",
+  "characters": "znaki",
+  "bytes": "bajty",
+  "language": "Język"
+}

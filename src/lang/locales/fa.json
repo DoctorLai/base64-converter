@@ -1,0 +1,19 @@
+{
+  "title": "مبدل Base64",
+  "encode": "کدگذاری",
+  "decode": "کدگشایی",
+  "loadFile": "بارگذاری فایل",
+  "saveFile": "ذخیره فایل",
+  "lightMode": "حالت روشن",
+  "darkMode": "حالت تاریک",
+  "clear": "پاک کردن",
+  "copy": "کپی",
+  "copied": "کپی شد!",
+  "inputPlaceholder": "اینجا وارد کنید...",
+  "outputPlaceholder": "خروجی اینجا نمایش داده می‌شود...",
+  "inputLabel": "ورودی",
+  "outputLabel": "خروجی",
+  "characters": "نویسه",
+  "bytes": "بایت",
+  "language": "زبان"
+}

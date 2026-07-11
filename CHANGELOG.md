@@ -12,10 +12,14 @@ versioned packages, releases are dated (`YYYY.M.D`).
 
 - GitHub Pages deployment workflow, triggered by pushes to `main` and manual
   dispatch (`.github/workflows/deploy.yml`).
+- **Traditional Chinese (`zh-TW`)** translation, bringing the interface to
+  26 languages.
 
 ### Changed
 
 - Links are now rendered in yellow in dark mode for better contrast.
+- Refactored i18n so each language lives in its own JSON file under
+  `src/lang/locales/` instead of a single module.
 
 ## [2026.7.11]
 
@@ -26,7 +30,6 @@ versioned packages, releases are dated (`YYYY.M.D`).
   Translations live in `src/lang/`.
 - **Copy to clipboard** button for the output area.
 - **Live character and byte counts** for the input and output.
-- **URL-safe Base64** toggle for encoding/decoding.
 - ESLint configuration and `npm run lint` / `npm run lint:fix` scripts.
 - `npm run check` script that runs formatting, linting, coverage, and build.
 - Community health files: `SECURITY.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`,

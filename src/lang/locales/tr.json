@@ -1,0 +1,19 @@
+{
+  "title": "Base64 Dönüştürücü",
+  "encode": "Kodla",
+  "decode": "Kodu Çöz",
+  "loadFile": "Dosya Yükle",
+  "saveFile": "Dosyayı Kaydet",
+  "lightMode": "Açık Mod",
+  "darkMode": "Koyu Mod",
+  "clear": "Temizle",
+  "copy": "Kopyala",
+  "copied": "Kopyalandı!",
+  "inputPlaceholder": "Buraya girin...",
+  "outputPlaceholder": "Çıktı burada görünür...",
+  "inputLabel": "Giriş",
+  "outputLabel": "Çıkış",
+  "characters": "karakter",
+  "bytes": "bayt",
+  "language": "Dil"
+}

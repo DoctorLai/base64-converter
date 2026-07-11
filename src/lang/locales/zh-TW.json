@@ -1,0 +1,19 @@
+{
+  "title": "Base64 轉換器",
+  "encode": "編碼",
+  "decode": "解碼",
+  "loadFile": "載入檔案",
+  "saveFile": "儲存檔案",
+  "lightMode": "淺色模式",
+  "darkMode": "深色模式",
+  "clear": "清除",
+  "copy": "複製",
+  "copied": "已複製！",
+  "inputPlaceholder": "在此輸入...",
+  "outputPlaceholder": "輸出顯示於此...",
+  "inputLabel": "輸入",
+  "outputLabel": "輸出",
+  "characters": "字元",
+  "bytes": "位元組",
+  "language": "語言"
+}
